@@ -1,6 +1,13 @@
-@extends('layouts.auth_template')
+@extends('layouts.main_template')
 
 @section('title','Login')
+
+@section('header-right')
+<nav class="header-right ml-sm-auto pr-5">
+    <a class="p-2 text-dark" href="/">Login</a>
+    <a class="p-2 text-dark" href="/register">Register</a>
+</nav>
+@endsection
 
 @section('forms')
 <form class="p-5 text-right" action="#" method="POST">

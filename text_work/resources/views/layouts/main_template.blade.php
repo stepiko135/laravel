@@ -8,9 +8,14 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-    <style>.header{
-        height: 70px;
-    } </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" defer="defer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" defer="defer"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" defer="defer"></script>
+    <style>
+        .header {
+            height: 70px;
+        }
+    </style>
 </head>
 
 <body class="bg-light">
@@ -18,20 +23,18 @@
         <h4 class="header-left my-0 pl-5 mr-sm-auto">
             <a class="text-dark text-decoration-none" href="/">Laravel</a>
         </h4>
-        <nav class="header-right ml-sm-auto pr-5">
-            <a class="p-2 text-dark" href="/">Login</a>
-            <a class="p-2 text-dark" href="/register">Register</a>
-        </nav>
+    @yield('header-right')
     </div>
-    <div class="card mx-auto" style="max-width: 700px" >
+    <div class="card mx-auto" style="max-width: 700px">
         <div class="card-header ">
             <div calss="">@yield('title')</div>
+
         </div>
         <div class="p-3">
             @yield('forms')
 
         </div>
-        
+
 
     </div>
 </body>
