@@ -17,3 +17,7 @@ Route::get('/','AuthController@login');
 
 Route::get('register','AuthController@register');
 Route::post('register','AuthController@post');
+
+Route::get('todo','TodoItemController@index');
+Route::post('todo','TodoItemController@create');
+
