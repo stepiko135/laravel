@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\TodoItem;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\DB;
 
 class TodoItemController extends Controller
 {
@@ -85,8 +86,15 @@ class TodoItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        TodoItem::find($request->id)->delete();
+        // DB::update('update sqlite_sequence set seq=0 where name="todo_items"');
+        // DB::delete('delete from sqlite_sequence  where name = "todo_items"');
+        // DB::update('UPDATE todo_items SET id=  WHERE name=todo_items');
+        // DB::update('update todo_items set id=ROWID');
+        // DB::table('todo_items')->increment('id');
+        // DB::table('todo_items')->truncate();
+        return redirect('/todo');
     }
 }

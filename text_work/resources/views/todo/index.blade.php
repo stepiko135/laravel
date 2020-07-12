@@ -26,10 +26,10 @@
         </tr>
         @foreach ($items as $item)
             <tr>
-                <td>{{$item->id}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$item->text}}</td>
                 <td>
-                    <a href="/todo">
+                    <a href="#">
                         @if ($item->progress )
                         作業中
                         @else
@@ -38,7 +38,8 @@
                     </a>
                 </td>
                 <td>
-                <a href="#">削除</a>
+                <a href="/todo/del?id={{$item->id}}">削除</a>
+                </form>
                 </td>
             </tr>
         @endforeach
