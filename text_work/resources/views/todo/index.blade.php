@@ -30,7 +30,7 @@
                 <td>{{$item->text}}</td>
                 <td>
                     <a href="/todo">
-                        @if ($item->progress==1)
+                        @if ($item->progress )
                         作業中
                         @else
                         完了
