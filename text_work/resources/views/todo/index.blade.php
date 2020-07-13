@@ -29,13 +29,17 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$item->text}}</td>
                 <td>
-                    <a href="#">
-                        @if ($item->progress )
-                        作業中
-                        @else
-                        完了
-                        @endif
-                    </a>
+                    <form action="/todo" method="POST">
+                    @csrf
+                    @method("PUT")
+                     <button type="submit" name="id" value="{{$item->id}}">
+                            @if ($item->progress)
+                            作業中
+                            @else
+                            完了
+                            @endif
+                    </button>
+                    </form>
                 </td>
                 <td>
                 <a href="/todo/del?id={{$item->id}}">削除</a>

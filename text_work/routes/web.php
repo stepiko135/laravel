@@ -20,5 +20,6 @@ Route::post('register','AuthController@post');
 
 Route::get('todo','TodoItemController@index');
 Route::post('todo','TodoItemController@create');
+Route::put('todo','TodoItemController@update');
 
 Route::get('todo/del','TodoItemController@destroy');

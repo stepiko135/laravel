@@ -25,6 +25,7 @@ class TodoItemController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    // ↓本来はstoreメソッドに書くべきだったかも？
     public function create(Request $request)
     {
         $this->validate($request,TodoItem::$rules);
@@ -75,9 +76,16 @@ class TodoItemController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $todoitem=Todoitem::find($request->id);
+        if($todoitem->progress){
+            $todoitem->progress=0;
+        }else{
+            $todoitem->progress=1;
+        }
+        $todoitem->save();
+        return redirect('/todo');
     }
 
     /**
