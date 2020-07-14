@@ -79,11 +79,8 @@ class TodoItemController extends Controller
     public function update(Request $request)
     {
         $todoitem=Todoitem::find($request->id);
-        if($todoitem->progress){
-            $todoitem->progress=0;
-        }else{
-            $todoitem->progress=1;
-        }
+        $progress = $todoitem->progress;
+        $todoitem->progress =! $progress;
         $todoitem->save();
         return redirect('/todo');
     }
