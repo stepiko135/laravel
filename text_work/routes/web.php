@@ -23,3 +23,5 @@ Route::post('todo','TodoItemController@create');
 Route::put('todo','TodoItemController@update');
 
 Route::get('todo/del','TodoItemController@destroy');
+
+Route::post('todo/filter','TodoItemController@filter');

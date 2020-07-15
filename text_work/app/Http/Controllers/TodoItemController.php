@@ -102,4 +102,24 @@ class TodoItemController extends Controller
         // DB::table('todo_items')->truncate();
         return redirect('/todo');
     }
+
+    public function filter(Request $request)
+    {
+        
+        switch($request->filter)
+        {
+            case 'all' :
+                $items = TodoItem::all();
+            break;
+
+            case 'progress':
+                $items = TodoItem::where('progress',1)->get();
+            break;
+
+            case 'finished':
+                $items = TodoItem::where('progress',0)->get();
+            break;          
+        }
+        return view('todo.index',['items' => $items]);
+    }
 }

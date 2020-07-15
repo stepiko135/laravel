@@ -8,10 +8,11 @@
 </head>
 <body>
     <h1>ToDoリスト</h1>
-    <form action="#" method="POST">
-        <input type="radio" name="filter" id='filter' value="all" checked>すべて
-        <input type="radio" name="filter" id='filter' value="progress">作業中
-        <input type="radio" name="filter" id='filter' value="finished">完了
+    <form action="/todo/filter" method="post">
+        @csrf
+        <input type="radio" name="filter" id='filter' value="all" onclick="this.form.submit()";>すべて
+        <input type="radio" name="filter" id='filter' value="progress" onclick="this.form.submit()";>作業中
+        <input type="radio" name="filter" id='filter' value="finished" onclick="this.form.submit()";>完了
     </form>
 @if (count($errors)>0)
 @foreach ($errors->all() as $error)  
