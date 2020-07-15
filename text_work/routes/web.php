@@ -13,6 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','AuthController@login');
+
+Route::get('register','AuthController@register');
+Route::post('register','AuthController@post');
+
+Route::get('todo','TodoItemController@index');
+Route::post('todo','TodoItemController@create');
+Route::put('todo','TodoItemController@update');
+
+Route::get('todo/del','TodoItemController@destroy');
+
+Route::post('todo/filter','TodoItemController@filter');

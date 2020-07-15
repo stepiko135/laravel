@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Todo List</title>
+</head>
+<body>
+    <h1>ToDoリスト</h1>
+    <form action="/todo/filter" method="post">
+        @csrf
+        <input type="radio" name="filter" id='filter' value="all" onclick="this.form.submit()";>すべて
+        <input type="radio" name="filter" id='filter' value="progress" onclick="this.form.submit()";>作業中
+        <input type="radio" name="filter" id='filter' value="finished" onclick="this.form.submit()";>完了
+    </form>
+@if (count($errors)>0)
+@foreach ($errors->all() as $error)  
+<ul>
+    <li>{{$error}}</li>
+</ul>
+@endforeach
+@endif
+    <table>
+        <tr>
+            <th>ID</th><th>コメント</th><th>状態</th>
+        </tr>
+        @foreach ($items as $item)
+            <tr>
+                <td>{{$loop->iteration}}</td>
+                <td>{{$item->text}}</td>
+                <td>
+                    <form action="/todo" method="POST">
+                    @csrf
+                    @method("PUT")
+                     <button type="submit" name="id" value="{{$item->id}}">
+                            @if ($item->progress)
+                            作業中
+                            @else
+                            完了
+                            @endif
+                    </button>
+                    </form>
+                </td>
+                <td>
+                <a href="/todo/del?id={{$item->id}}">削除</a>
+                </form>
+                </td>
+            </tr>
+        @endforeach
+    </table>
+
+    <h1>新規タスクの追加</h1>
+    <form action="/todo" method="POST">
+        @csrf
+        <input type="text" name="text" id="text" autofocus >
+        {{-- value=1なら作業中 --}}
+        <input type="hidden" name="progress" id="progress" value=1 >
+        <input type="submit" value="追加">
+    </form>
+</body>
+</html>
